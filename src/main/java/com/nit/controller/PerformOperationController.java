@@ -18,6 +18,7 @@ public class PerformOperationController extends MultiActionController {
 		mav.addObject("operation","add");
 		mav.addObject("cmdData",cmd);
 		return mav;
+		System.out.println("hello");
 	}
 	public ModelAndView update(HttpServletRequest req,HttpServletResponse res,TestCommand cmd)
 	{
