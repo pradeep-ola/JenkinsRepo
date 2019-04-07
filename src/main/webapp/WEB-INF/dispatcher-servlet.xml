@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<property name="mappings">
+		<props>
+			<prop key="user.htm">pvc1</prop>
+			<prop key="add.htm">poc</prop>
+			<prop key="modify.htm">poc</prop>
+			<prop key="remove.htm">poc</prop>
+			<prop key="show.htm">poc</prop>
+		</props>
+	</property>
+</bean>
+<bean id="pvc1" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+	<property name="viewName" value="user"/>
+</bean>
+<bean id="mnr" class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+	<property name="mappings">
+		<props>
+			<prop key="/add.htm">insert</prop>
+			<prop key="/modify.htm">update</prop>
+			<prop key="/remove.htm">delete</prop>
+			<prop key="/show.htm">view</prop>
+			<prop key="/invalid.htm">invalid</prop>
+		</props>
+	</property>
+</bean>
+<bean id="poc" class="com.nit.controller.PerformOperationController">
+	<property name="methodNameResolver" ref="mnr"/>
+</bean>
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="prefix" value="/WEB-INF/pages/"/>
+	<property name="suffix" value=".jsp"/>
+</bean>
+</beans>
