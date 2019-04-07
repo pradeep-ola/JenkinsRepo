@@ -12,13 +12,14 @@ public class PerformOperationController extends MultiActionController {
 	
 	public ModelAndView insert(HttpServletRequest req,HttpServletResponse res,TestCommand cmd)
 	{
+		System.out.println("hello");
 		ModelAndView mav= null;
 		mav = new ModelAndView();
 		mav.setViewName("user");
 		mav.addObject("operation","add");
 		mav.addObject("cmdData",cmd);
 		return mav;
-		System.out.println("hello");
+		
 	}
 	public ModelAndView update(HttpServletRequest req,HttpServletResponse res,TestCommand cmd)
 	{
